@@ -11,7 +11,7 @@ tags: note
 <!--more-->
 
 eg:
-```
+```javascript
 var duck = {
   duckSinging: function(){
     console.log("嘎嘎嘎")

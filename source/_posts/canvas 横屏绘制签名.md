@@ -13,7 +13,7 @@ tags: note
 ![WechatIMG1.jpeg](https://upload-images.jianshu.io/upload_images/19117972-66237972080e1ad7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-```
+```html
 <div id="canvasBox" :style="getHorizontalStyle">
   <canvas id="signcanvas" :width="getHorizontalStyle.width" :height="getHorizontalStyle.height" ></canvas>
   <div>
@@ -23,7 +23,7 @@ tags: note
 </div>
 ```
 * 设置旋转角度
-```
+```javascript
 data (){
   return {
     degree: 90,
@@ -31,7 +31,7 @@ data (){
 }
 ```
 * 计算画布大小
-```
+```javascript
 computed: {
     getHorizontalStyle() {
       let d = document;
@@ -65,46 +65,49 @@ computed: {
       };
     },
   },
-````
-* 操作
 ```
-// 初始化画布
-initCanvas() {
-  let canvas = document.querySelector('#signcanvas');
-  this.draw = new Draw(canvas, -this.degree,this.penColor);
-},
-// 清楚画布
-clear() {
-  this.draw.clear();
-},
-// 下载图片
-download() {
-   this.draw.downloadPNGImage(this.draw.getPNGImage());
-},
-// 上传图片
-upload() {
-  let image = this.draw.getPNGImage();
-  let blob = this.draw.dataURLtoBlob(image);
-  var url = '';
-  let successCallback = (response) => {
-    console.log(response);
-  };
-  let failureCallback = (error) => {
-    console.log(error);
-  };
-  this.draw.upload(blob, url, successCallback, failureCallback);
-},
-// 检测canvas 非空
-isCanvasBlank(canvas) {
-  let emcan = document.querySelector('canvas');
-  var blank = document.createElement('canvas');//系统获取一个空canvas对象
-  blank.width = emcan.width;
-  blank.height = emcan.height;
-  return emcan.toDataURL() == blank.toDataURL();//比较值相等则为空
-},
+* 操作
+```javascript
+methods: {
+  // 初始化画布
+  initCanvas() {
+    let canvas = document.querySelector('#signcanvas');
+    this.draw = new Draw(canvas, -this.degree,this.penColor);
+  },
+  // 清楚画布
+  clear() {
+    this.draw.clear();
+  },
+  // 下载图片
+  download() {
+    this.draw.downloadPNGImage(this.draw.getPNGImage());
+  },
+  // 上传图片
+  upload() {
+    let image = this.draw.getPNGImage();
+    let blob = this.draw.dataURLtoBlob(image);
+    var url = '';
+    let successCallback = (response) => {
+      console.log(response);
+    };
+    let failureCallback = (error) => {
+      console.log(error);
+    };
+    this.draw.upload(blob, url, successCallback, failureCallback);
+  },
+  // 检测canvas 非空
+  isCanvasBlank(canvas) {
+    let emcan = document.querySelector('canvas');
+    var blank = document.createElement('canvas');//系统获取一个空canvas对象
+    blank.width = emcan.width;
+    blank.height = emcan.height;
+    return emcan.toDataURL() == blank.toDataURL();//比较值相等则为空
+  },
+}
+
 ```
 * draw.js
-```
+```javascript
 /**
  * Created by louizhai on 17/6/30.
  * description: Use canvas to draw.

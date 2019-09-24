@@ -6,7 +6,7 @@ tags: note
 ---
 > Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的 \_\_proto\_\_ 。
 <!--more-->
-```
+```javascript
 const person = {
   isHuman: false,
   printIntroduction: function () {
@@ -31,7 +31,7 @@ me.printIntroduction(); //  我的名字是周树人.我是人类吗 ? true
 #### 返回值
 * 一个新对象，带着指定的原型对象和属性。
 #### 兼容写法
-```
+```javascript
 Object.create = Object.create || function ( proto ){
   if (typeof proto !== 'object' && typeof proto !== 'function') {
     throw new TypeError('Object prototype may only be an Object: ' + proto);

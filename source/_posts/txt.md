@@ -15,7 +15,7 @@ toc: true
 
 阿里图表插件    ：[dataV](http://datav.jiaminghi.com/guide/percentPond.html#%E5%AE%9A%E5%88%B6%E5%9D%97%E9%9A%99%E9%95%BF%E5%BA%A6)
 
-```
+```javascript
 function getMonthLength(date) {
   let d = new Date(date)
   // 将日期设置为下月一号

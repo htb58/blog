@@ -15,7 +15,7 @@ tags: note
 
 * 我最常见的处理 0.1 + 0.2 和  0.3 是否相等的方法就是去设置一个误差范围值，通常称为 **”机器精度“**，对javaScript数字来说，这个值通常是 2.220446049250313e-16 。
 >从es6开始，该值定义在Number.EPSILON中。
-```
+```javascript
 if( !Number.EPSILON ){
   Number.EPSILON = Math.pow( 2, -52 );
 }

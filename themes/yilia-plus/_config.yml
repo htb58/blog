@@ -104,7 +104,7 @@ disqus: false
 
 # 3、Gitment----基于GitHub的评论系统(关闭请设置gitment_owner为false)
 # 关于如何集成:https://www.jianshu.com/p/ac7658cc912f
-gitment_owner: false      #你的 GitHub ID
+gitment_owner: htb0058 #false      #你的 GitHub ID
 # 是否使用官方js(false可以提升访问速度，本地修改过一部分的js，官方js可能会出现服务器不稳定，不太建议使用)
 gitment_remote: false
 gitment_repo: ''          #存储评论的 repo name(需要在Github创建)
