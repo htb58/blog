@@ -2,6 +2,7 @@
 menu:
   主页: /
   技术笔记: https://htb58.github.io/
+  笔记: /tags/js
   随笔: /tags/note
 
 # subNav-子导航
