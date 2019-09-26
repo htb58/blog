@@ -108,3 +108,97 @@ var obj2 = {
 console.log( obj1.getName() ); // obj1
 console.log( obj1.getName.call(obj2)) // obj2
 ```
+
+# call 和 apply
+
+> ECAMScript 3 给 Function 的原型定义了两个方法，它们是 Function.prototype.call 和 Function.prototype.apply。
+
+# call 和 apply 的区别
+
+> Function.prototype.call 和 Function.prototype.apply 它们的作用是一摸一样的，区别仅在于传入的参数形式的不同。
+
+## apply 
+> apply 接受两个参数，第一个参数指定了函数体内this 对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组,apply方法把这个集合中的元素作为参数传递给被调用的函数：
+
+```javascript
+var func = function( a, b, c ){
+  console.log( [a, b, c] ); // [1, 2, 3]
+};
+func.apply( null , [1, 2, 3])
+```
+
+## call 
+> call 传入的参数的数量不固定，跟apply相同的是，第一个参数也是代表函数体内的this的指向，从第二个参数开始往后，每个参数依次传入函数：
+
+```javascript
+var func = function( a, b, c ){
+  console.log( [a, b, c] ); // [1, 2, 3]
+};
+func.call( null , 1, 2, 3)
+```
+
+> 当使用call 或者 apply 的时候，如果我们传入的第一个参数为null，函数体内的 this 会指向默认的宿主对象，在浏览器中则是window。
+
+```javaScript
+
+var func = function( a, b, c ){
+  console.log( this == window ); // true
+};
+func.call( null , 1, 2, 3)
+
+```
+
+>但如果在严格模式下，函数体内的 this 还是null。
+
+```javaScript
+
+  var func = function( a, b, c ){
+    "use strict"
+    console.log( this == null ); // true
+  };
+  func.call( null , 1, 2, 3)
+```
+
+# call 和 apply 的用途
+
+### 改变this的指向
+
+```javaScript
+  var obj1 = {
+    name: 'obj1'
+  };
+  var obj2 = {
+    name: 'obj2'
+  };
+  window.name = 'window'
+
+  var getName = function() {
+    console.log(this.name)
+  }
+
+  getName();  // window
+  getName.call(obj1) // obj1
+  getName.call(obj2) // obj2
+
+```
+
+### Function.prototype.bind
+ 
+* 模拟Function.prototype.bind 实现
+
+```javascript
+Function.prototype.bind = function( context ){
+  var self = this;
+  return function(){
+    return self.apply(context,arguments)
+  }
+}
+var obj = {
+  name: 'obj'
+}
+var func = function(){
+  console.log(this.name)
+}.bind( obj );
+func();
+```
+### 借用其他对象的方法
