@@ -1,6 +1,6 @@
 ---
 title: this、call 和 apply
-date: 2019-09-24 08:38:37
+date: 
 category: vue
 tags: js
 ---

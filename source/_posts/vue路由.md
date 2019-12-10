@@ -1,6 +1,6 @@
 ---
 title: vue路由的两种模式，hash与history原理
-date: 2019-09-24 08:38:37
+date: 
 category: vue
 tags: note
 ---

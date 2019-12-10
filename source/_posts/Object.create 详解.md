@@ -1,6 +1,6 @@
 ---
 title: Object.create 详解
-date: 2019-09-24 08:38:37
+date: 
 category: javaScipt
 tags: note
 ---

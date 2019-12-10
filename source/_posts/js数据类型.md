@@ -1,6 +1,6 @@
 ---
 title: 精确判断 js 数据类型
-date: 2019-09-24 08:38:37
+date: 
 category: javaScipt
 tags: note
 ---
